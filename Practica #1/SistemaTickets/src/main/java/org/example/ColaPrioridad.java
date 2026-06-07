@@ -5,33 +5,33 @@ public class ColaPrioridad {
     private static final int capacidadInicial = 16;
 
     private Ticket[] heap;
-    private int tamanio;
+    private int tamano;
 
     public ColaPrioridad(){
         heap = new Ticket[capacidadInicial];
-        tamanio = 0;
+        tamano = 0;
     }
 
     public boolean estaVacia(){
-        return tamanio == 0;
+        return tamano == 0;
     }
 
     public void encolar(Ticket ticket){
-        if (tamanio == heap.length){
+        if (tamano == heap.length){
             Ticket[] nuevo = new Ticket[heap.length * 2];
             System.arraycopy(heap, 0, nuevo, 0, heap.length);
             heap = nuevo;
         }
-        heap[tamanio] = ticket;
-        subirUltimo(tamanio);
-        tamanio++;
+        heap[tamano] = ticket;
+        subirUltimo(tamano);
+        tamano++;
     }
 
     public Ticket desencolar(){
         Ticket raiz = heap[0];
-        tamanio--;
-        heap[0] = heap[tamanio];
-        heap[tamanio] = null;
+        tamano--;
+        heap[0] = heap[tamano];
+        heap[tamano] = null;
         if (!estaVacia()) bajarDesde(0);
         return raiz;
     }
@@ -64,8 +64,8 @@ public class ColaPrioridad {
             int der = 2 * indice + 2;
             int menor = indice;
 
-            if (izq < tamanio && tieneMasPrioridad(heap[izq], heap[menor])) menor = izq;
-            if (der < tamanio && tieneMasPrioridad(heap[der], heap[menor])) menor = der;
+            if (izq < tamano && tieneMasPrioridad(heap[izq], heap[menor])) menor = izq;
+            if (der < tamano && tieneMasPrioridad(heap[der], heap[menor])) menor = der;
             if (menor == indice) break;
 
             intercambiar(indice, menor);
@@ -77,5 +77,15 @@ public class ColaPrioridad {
         Ticket temp = heap[i];
         heap[i] = heap[j];
         heap[j] = temp;
+    }
+
+    public void mostrarTodos(){
+        if (estaVacia()){
+            System.out.println("No hay tickets pendientes.");
+            return;
+        }
+        for (int i = 0; i < tamano; i++){
+            System.out.println(heap[i]);
+        }
     }
 }

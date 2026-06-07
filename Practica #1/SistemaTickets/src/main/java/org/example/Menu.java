@@ -39,12 +39,14 @@ public class Menu {
             System.out.println("\n--- Menu Usuario ---");
             System.out.println("1. Crear ticket");
             System.out.println("2. Buscar ticket resuelto");
+            System.out.println("3. Ver todos los tickets resueltos");
             System.out.println("0. Volver");
             opcion = leerEntero("Seleccione una opcion: ");
 
             switch (opcion){
                 case 1 -> crearTicket();
                 case 2 -> buscarTicketResuelto();
+                case 3 -> verTodosResueltos();
                 case 0 -> System.out.println("Volviendo...");
                 default -> System.out.println("Opcion no valida.");
             }
@@ -57,12 +59,14 @@ public class Menu {
             System.out.println("\n--- Menu Administrador ---");
             System.out.println("1. Ver ticket al frente de la cola");
             System.out.println("2. Resolver ticket al frente de la cola");
+            System.out.println("3. Ver todos los tickets pendientes");
             System.out.println("0. Volver");
             opcion = leerEntero("Seleccione una opcion: ");
 
             switch (opcion){
                 case 1 -> verFrenteCola();
                 case 2 -> resolverTicket();
+                case 3 -> verTodosPendientes();
                 case 0 -> System.out.println("Volviendo...");
                 default -> System.out.println("Opcion no valida.");
             }
@@ -148,5 +152,15 @@ public class Menu {
             scanner.nextLine();
             return -1;
         }
+    }
+
+    private void verTodosPendientes(){
+        System.out.println("\n--- Tickets pendientes ---");
+        colaPendientes.mostrarTodos();
+    }
+
+    private void verTodosResueltos(){
+        System.out.println("\n--- Tickets resueltos ---");
+        listaResueltos.mostrarTodos();
     }
 }

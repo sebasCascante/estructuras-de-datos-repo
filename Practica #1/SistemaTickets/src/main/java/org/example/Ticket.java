@@ -7,7 +7,7 @@ public class Ticket{
         P1, P2, P3;
 
         public static Prioridad fromString(String valor){
-            switch (valor.trim()){
+            switch(valor.trim()){
                 case "1": return P1;
                 case "2": return P2;
                 case "3": return P3;

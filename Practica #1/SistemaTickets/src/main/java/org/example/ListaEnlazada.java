@@ -33,4 +33,16 @@ public class ListaEnlazada {
         }
         return null;
     }
+
+    public void mostrarTodos(){
+        if (estaVacia()){
+            System.out.println("No hay tickets resueltos.");
+            return;
+        }
+        NodoLista actual = cabeza;
+        while (actual != null){
+            System.out.println(actual.ticket);
+            actual = actual.siguiente;
+        }
+    }
 }
