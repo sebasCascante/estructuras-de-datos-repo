@@ -7,17 +7,17 @@ public class ColaPrioridad {
     private Ticket[] heap;
     private int tamanio;
 
-    public ColaPrioridad() {
+    public ColaPrioridad(){
         heap = new Ticket[capacidadInicial];
         tamanio = 0;
     }
 
-    public boolean estaVacia() {
+    public boolean estaVacia(){
         return tamanio == 0;
     }
 
-    public void encolar(Ticket ticket) {
-        if (tamanio == heap.length) {
+    public void encolar(Ticket ticket){
+        if (tamanio == heap.length){
             Ticket[] nuevo = new Ticket[heap.length * 2];
             System.arraycopy(heap, 0, nuevo, 0, heap.length);
             heap = nuevo;
@@ -27,7 +27,7 @@ public class ColaPrioridad {
         tamanio++;
     }
 
-    public Ticket desencolar() {
+    public Ticket desencolar(){
         Ticket raiz = heap[0];
         tamanio--;
         heap[0] = heap[tamanio];
@@ -36,30 +36,30 @@ public class ColaPrioridad {
         return raiz;
     }
 
-    public Ticket frente() {
+    public Ticket frente(){
         return heap[0];
     }
 
-    private boolean tieneMasPrioridad(Ticket a, Ticket b) {
+    private boolean tieneMasPrioridad(Ticket a, Ticket b){
         int cmp = a.getPrioridad().compareTo(b.getPrioridad());
         if (cmp != 0) return cmp < 0;
         return a.getId() < b.getId();
     }
 
-    private void subirUltimo(int indice) {
-        while (indice > 0) {
+    private void subirUltimo(int indice){
+        while (indice > 0){
             int padre = (indice - 1) / 2;
-            if (tieneMasPrioridad(heap[indice], heap[padre])) {
+            if (tieneMasPrioridad(heap[indice], heap[padre])){
                 intercambiar(indice, padre);
                 indice = padre;
-            } else {
+            } else{
                 break;
             }
         }
     }
 
-    private void bajarDesde(int indice) {
-        while (true) {
+    private void bajarDesde(int indice){
+        while (true){
             int izq = 2 * indice + 1;
             int der = 2 * indice + 2;
             int menor = indice;
@@ -73,7 +73,7 @@ public class ColaPrioridad {
         }
     }
 
-    private void intercambiar(int i, int j) {
+    private void intercambiar(int i, int j){
         Ticket temp = heap[i];
         heap[i] = heap[j];
         heap[j] = temp;

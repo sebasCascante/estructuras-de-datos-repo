@@ -4,30 +4,30 @@ public class ListaEnlazada {
 
     private NodoLista cabeza;
 
-    public ListaEnlazada() {
+    public ListaEnlazada(){
         cabeza = null;
     }
 
-    public boolean estaVacia() {
+    public boolean estaVacia(){
         return cabeza == null;
     }
 
-    public void agregar(Ticket ticket) {
+    public void agregar(Ticket ticket){
         NodoLista nuevo = new NodoLista(ticket);
-        if (cabeza == null) {
+        if (cabeza == null){
             cabeza = nuevo;
-        } else {
+        } else{
             NodoLista actual = cabeza;
-            while (actual.siguiente != null) {
+            while (actual.siguiente != null){
                 actual = actual.siguiente;
             }
             actual.siguiente = nuevo;
         }
     }
 
-    public Ticket buscarPorId(int id) {
+    public Ticket buscarPorId(int id){
         NodoLista actual = cabeza;
-        while (actual != null) {
+        while (actual != null){
             if (actual.ticket.getId() == id) return actual.ticket;
             actual = actual.siguiente;
         }
