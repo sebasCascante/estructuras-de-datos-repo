@@ -72,7 +72,7 @@ public class Menu {
             }
         } while (opcion != 0);
     }
-
+    //Pide los datos al usuario y encola el ticket nuevo.
     private void crearTicket(){
         System.out.print("Nombre completo: ");
         String nombre = scanner.nextLine().trim();
@@ -104,6 +104,7 @@ public class Menu {
         System.out.println("Ticket creado. Su ID es: #" + ticket.getId());
     }
 
+    //Busca el ticket en la lista de resueltos, si no esta avisa que sigue pendiente.
     private void buscarTicketResuelto(){
         int id = leerEntero("Ingrese el ID del ticket: ");
         if (id <= 0){
@@ -130,6 +131,7 @@ public class Menu {
         System.out.println(colaPendientes.frente());
     }
 
+    //Desencola el ticket de mayor prioridad, lo marca como resuelto y lo pasa a la lista.
     private void resolverTicket(){
         if (colaPendientes.estaVacia()){
             System.out.println("No hay tickets pendientes.");
@@ -142,6 +144,7 @@ public class Menu {
         System.out.println(ticket);
     }
 
+    //Lee un entero de la consola, devuelve -1 si el usuario ingresa algo que no es numero.
     private int leerEntero(String prompt){
         System.out.print(prompt);
         try{

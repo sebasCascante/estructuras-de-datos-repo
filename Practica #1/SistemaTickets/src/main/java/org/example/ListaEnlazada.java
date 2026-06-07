@@ -1,5 +1,6 @@
 package org.example;
 
+//Lista enlazada simple para almacenar los tickets ya resueltos.
 public class ListaEnlazada {
 
     private NodoLista cabeza;
@@ -12,6 +13,7 @@ public class ListaEnlazada {
         return cabeza == null;
     }
 
+    //Agrega el ticket al final de la lista.
     public void agregar(Ticket ticket){
         NodoLista nuevo = new NodoLista(ticket);
         if (cabeza == null){
@@ -24,7 +26,7 @@ public class ListaEnlazada {
             actual.siguiente = nuevo;
         }
     }
-
+    //Recorre la lista buscando el ticket por ID, devuelve null si no lo encuentra.
     public Ticket buscarPorId(int id){
         NodoLista actual = cabeza;
         while (actual != null){

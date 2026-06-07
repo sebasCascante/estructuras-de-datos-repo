@@ -1,5 +1,7 @@
 package org.example;
 
+//Cola de prioridad implementada con un Min-Heap manual.
+//El de mayor prioridad siempre queda en heap[0], si empatan sale el de menor ID.
 public class ColaPrioridad {
 
     private static final int capacidadInicial = 16;
@@ -16,6 +18,7 @@ public class ColaPrioridad {
         return tamano == 0;
     }
 
+    //Inserta el ticket y lo sube hasta donde le toca.
     public void encolar(Ticket ticket){
         if (tamano == heap.length){
             Ticket[] nuevo = new Ticket[heap.length * 2];
@@ -27,6 +30,7 @@ public class ColaPrioridad {
         tamano++;
     }
 
+    //Saca la raiz, pone el ultimo en su lugar y lo baja.
     public Ticket desencolar(){
         Ticket raiz = heap[0];
         tamano--;
@@ -46,6 +50,7 @@ public class ColaPrioridad {
         return a.getId() < b.getId();
     }
 
+    //Sube el elemento mientras tenga mas prioridad que su padre.
     private void subirUltimo(int indice){
         while (indice > 0){
             int padre = (indice - 1) / 2;
@@ -58,6 +63,7 @@ public class ColaPrioridad {
         }
     }
 
+    //Baja el elemento hacia el hijo con mayor prioridad.
     private void bajarDesde(int indice){
         while (true){
             int izq = 2 * indice + 1;
