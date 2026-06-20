@@ -2,11 +2,11 @@ package org.example;
 
 public class Pila{
     private Nodo tope;
-    private int tamanio;
+    private int tamano;
 
     public Pila(){
         this.tope = null;
-        this.tamanio = 0;
+        this.tamano = 0;
     }
 
     //Apila un token en el tope
@@ -14,7 +14,7 @@ public class Pila{
         Nodo nuevo = new Nodo(token);
         nuevo.setSig(this.tope);
         this.tope = nuevo;
-        this.tamanio++;
+        this.tamano++;
     }
 
     //Desapila y retorna el token del tope
@@ -25,7 +25,7 @@ public class Pila{
         }
         String token = this.tope.getToken();
         this.tope = this.tope.getSig();
-        this.tamanio--;
+        this.tamano--;
         return token;
     }
 
@@ -42,8 +42,8 @@ public class Pila{
         return this.tope == null;
     }
 
-    public int getTamanio(){
-        return this.tamanio;
+    public int gettamano(){
+        return this.tamano;
     }
 
     //Imprime el contenido de la pila de tope a fondo
@@ -101,7 +101,7 @@ public class Pila{
         }
 
         //Al final debe quedar exactamente un operando (el resultado acumulado)
-        if (pila.getTamanio() == 1 && !pila.peek().equals("+")){
+        if (pila.gettamano() == 1 && !pila.peek().equals("+")){
             return true;
         } else{
             System.out.println("Error: la expresion termina de forma incorrecta.");

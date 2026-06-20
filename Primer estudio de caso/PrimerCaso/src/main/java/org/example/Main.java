@@ -57,9 +57,9 @@ public class Main{
                     String expresion = sc.nextLine();
                     boolean valida = pila.analizarExpresion(expresion);
                     if (valida)
-                        System.out.println("Resultado: la expresion es VALIDA.");
+                        System.out.println("Resultado: la expresion es valida.");
                     else
-                        System.out.println("Resultado: la expresion es INVALIDA.");
+                        System.out.println("Resultado: la expresion es valida.");
                     break;
 
                 case 6:
